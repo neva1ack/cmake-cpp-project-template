@@ -11,10 +11,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # set release build
 set(CMAKE_BUILD_TYPE Release)
 # create build dir
-file(MAKE_DIRECTORY build)
+file(MAKE_DIRECTORY "${PROJECT_SOURCE_DIR}/build")
 # generate compile_commands.json
 set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
 # create executable from src/
-include_directories(${PROJECT_SOURCE_DIR}/include)
-file(GLOB PROJECT_GLOBBED_SOURCES ${PROJECT_SOURCE_DIR}/src/*.cpp)
-add_executable(${PROJECT_NAME} ${PROJECT_GLOBBED_SOURCES})
+include_directories("${PROJECT_SOURCE_DIR}/include")
+file(GLOB_RECURSE "${PROJECT_NAME}_SOURCES" "${PROJECT_SOURCE_DIR}/src/*.cpp")
+add_executable(${PROJECT_NAME} ${${PROJECT_NAME}_SOURCES})
