@@ -1,4 +1,6 @@
 #!/bin/sh
+# make build dir
+mkdir build
 # generate cmake buildsystem
 cmake -S . -B build -G Ninja
 # build cmake project
